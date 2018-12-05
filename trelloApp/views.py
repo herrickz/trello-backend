@@ -43,7 +43,7 @@ class ListApi(
     serializer_class = ListSerializer
     queryset = List.objects.all()
 
-class CardListApi(
+class CardApi(
     mixins.CreateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.UpdateModelMixin,
