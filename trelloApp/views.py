@@ -32,7 +32,7 @@ class BoardApi(
         except Exception as exception:
             return Response(None, status=status.HTTP_404_NOT_FOUND)
 
-class BoardListApi(
+class ListApi(
     mixins.CreateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.UpdateModelMixin,
