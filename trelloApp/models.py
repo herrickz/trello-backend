@@ -24,6 +24,21 @@ class List(models.Model):
 class Card(models.Model):
     name = models.TextField()
     trelloList = models.ForeignKey(List, related_name='cards', on_delete=models.CASCADE)
+    order = models.IntegerField(default=0, null=True)
 
     def __str__(self):
-        return self.name
+        return f'name: {self.name}, order: {self.order}'
+
+    def save(self, *args, **kwargs):
+        if self._state.adding:
+            last_card = Card.objects.filter(trelloList__id=self.trelloList.id).order_by('-order').first()
+
+            if last_card is not None:
+                self.order = last_card.order + 1
+            else:
+                self.order = 0
+
+        super().save(*args, **kwargs)
+
+    class Meta:
+        unique_together = ('trelloList', 'order',)

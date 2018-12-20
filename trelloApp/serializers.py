@@ -6,10 +6,20 @@ class BoardSerializer(serializers.ModelSerializer):
         model = Board
         fields = '__all__'
 
+class CreateCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Card
+        fields = ('id', 'name', 'trelloList')
+
 class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         fields = '__all__'
+
+class CreateCardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Card
+        fields = ('id', 'name', 'trelloList')
 
 class ListSerializer(serializers.ModelSerializer):
     cards = CardSerializer(many=True, read_only=True)
