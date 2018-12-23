@@ -54,11 +54,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',  
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
-    'localhost:8000',
-    'localhost:3000',
+    'localhost:4200',
 )
 
 ROOT_URLCONF = 'trello.urls'
