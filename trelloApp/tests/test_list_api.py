@@ -11,7 +11,7 @@ class ListApiTest(TestCase):
 
         board = Board.objects.create(name='test board')
         trello_list_object = List.objects.create(name='test list', board=board)
-        card = Card.objects.create(name='test card', trelloList=trello_list_object)
+        card = Card.objects.create(name='test card', trelloList=trello_list_object, order=0)
 
         get_response = self.client.get('/api/list/')
         trello_list = OrderedDictToObject(get_response.data[0])
