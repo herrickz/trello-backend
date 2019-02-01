@@ -25,6 +25,7 @@ class Card(models.Model):
     name = models.TextField()
     trelloList = models.ForeignKey(List, related_name='cards', on_delete=models.CASCADE)
     order = models.IntegerField(default=0, null=True)
+    description = models.TextField(default='', blank=True)
 
     def __str__(self):
         return f'name: {self.name}, order: {self.order}'
